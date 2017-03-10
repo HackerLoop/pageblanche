@@ -11,7 +11,7 @@ document.getElementById('save-changes').addEventListener('click',function(){
     var actualFilePath = "./txt/test_file.txt";
 
     if(actualFilePath){
-        saveChanges(actualFilePath,document.getElementById("session-content").value);
+        saveChanges(actualFilePath,document.getElementById("session-content").innerHTML);
     }else{
         console.log("Please select a file first");
     }
@@ -19,7 +19,7 @@ document.getElementById('save-changes').addEventListener('click',function(){
 
 
 document.getElementById('create-new-file').addEventListener('click',function(){
-    var content = document.getElementById("session-content").value;
+    var content = document.getElementById("session-content").innerHTML;
 
     dialog.showSaveDialog(function (fileName) {
         if (fileName === undefined){
@@ -44,7 +44,7 @@ function readFile(filepath) {
             return;
         }
 
-        document.getElementById("session-content").value = data;
+        document.getElementById("session-content").innerHTML = data;
     });
 }
 
