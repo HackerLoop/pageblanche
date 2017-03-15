@@ -60,19 +60,3 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-
-// File creation, saving and updating system
-
-// Components
-var fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
-
-// Creating the file
-// fileName is a string that contains the path and filename created in the save file dialog.
-var fileName = "txt/test_file.txt";
-fs.writeFile(fileName, "coucou", function (err) {
-    if(err){
-        console.log("An error ocurred creating the file "+ err.message)
-    }
-
-    console.log("The file has been succesfully saved");
-});
