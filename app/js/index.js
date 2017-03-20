@@ -17,7 +17,7 @@ var funnyFilePath = spintax.unspin("txt/The_{average|big|colossal|fat|giant|giga
 // fileName is a string that contains the path and filename created in the save file dialog.
 var fileName = funnyFilePath.toLowerCase();
 // var fileName = "txt/funnyFilename.txt";
-fs.writeFile(fileName, "coucou", function (err) {
+fs.writeFile(fileName, "what will you write today", function (err) {
     if(err){
         console.log("An error ocurred creating the file "+ err.message)
     }
