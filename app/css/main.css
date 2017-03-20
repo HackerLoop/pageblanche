@@ -2,10 +2,16 @@
     outline: none;
 }
 
+@font-face {
+  font-family: Playfair;
+  src: url(fonts/PlayfairDisplay-Regular.otf)
+}
+
 body {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Playfair', Helvetica, Arial, sans-serif;
     font-size: 22px;
     line-height: 30px;
+    color: #333333;
 }
 
 .top-bar {
