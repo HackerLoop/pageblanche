@@ -19,7 +19,7 @@ var funnyFilePath = spintax.unspin("_The_{average|big|colossal|fat|giant|giganti
 var folder = "txt/"
 var fileName = folder + moment().format("YYYYMMDD-hh-mm") + funnyFilePath.toLowerCase();
 // var fileName = "txt/funnyFilename.txt";
-fs.writeFile(fileName, "coucou", function (err) {
+fs.writeFile(fileName, "what will you write today", function (err) {
     if(err){
         console.log("An error ocurred creating the file "+ err.message)
     }
@@ -30,7 +30,16 @@ fs.writeFile(fileName, "coucou", function (err) {
 
 // Save changes
 
+var hasDisappeared = false
+
 document.onkeypress = function(e){
+    if (!hasDisappeared) {
+      var placeholder = document.getElementById('placeholder');
+      placeholder.style = "opacity:0;"
+      setTimeout(function(){placeholder.parentElement.removeChild(placeholder)},1500);
+      hasDisappeared = true;
+    }
+
     if (e.charCode == 13) {
       var actualFilePath = fileName;
 
