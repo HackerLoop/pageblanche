@@ -22,7 +22,7 @@ fs.writeFile(fileName, "coucou", function (err) {
         console.log("An error ocurred creating the file "+ err.message)
     }
 
-    console.log("The file has been succesfully saved");
+    console.log("The file has been succesfully created");
 });
 
 
@@ -38,10 +38,10 @@ document.getElementById('save-changes').addEventListener('click',function(){
     }
 },false);
 
-document.getElementById('save-changes').onkeypress = function(e){
+document.onkeypress = function(e){
     if (!e) e = window.event;
     var keyCode = e.keyCode || e.which;
-    if (keyCode == '13'){
+    if (keyCode === '13'){
       var actualFilePath = fileName;
 
       if(actualFilePath){
@@ -49,6 +49,7 @@ document.getElementById('save-changes').onkeypress = function(e){
       }else{
           console.log("Please select a file first");
       }
+      console.log("enter has been pressed")
       return false;
     }
   }
