@@ -38,6 +38,21 @@ document.getElementById('save-changes').addEventListener('click',function(){
     }
 },false);
 
+document.getElementById('save-changes').onkeypress = function(e){
+    if (!e) e = window.event;
+    var keyCode = e.keyCode || e.which;
+    if (keyCode == '13'){
+      var actualFilePath = fileName;
+
+      if(actualFilePath){
+          saveChanges(actualFilePath,document.getElementById("session-content").innerHTML);
+      }else{
+          console.log("Please select a file first");
+      }
+      return false;
+    }
+  }
+
 
 document.getElementById('create-new-file').addEventListener('click',function(){
     var content = document.getElementById("session-content").innerHTML;
