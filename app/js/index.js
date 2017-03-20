@@ -30,7 +30,16 @@ fs.writeFile(fileName, "what will you write today", function (err) {
 
 // Save changes
 
+var hasDisappeared = false
+
 document.onkeypress = function(e){
+    if (!hasDisappeared) {
+      var placeholder = document.getElementById('placeholder');
+      placeholder.style = "opacity:0;"
+      setTimeout(function(){placeholder.parentElement.removeChild(placeholder)},1500);
+      hasDisappeared = true;
+    }
+
     if (e.charCode == 13) {
       var actualFilePath = fileName;
 

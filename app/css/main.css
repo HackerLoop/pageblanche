@@ -103,6 +103,12 @@ blockquote {
     padding-bottom: 40px;
 }
 
+#placeholder {
+  display: inline-block;
+  color: rgba(41,41,41,0.4);
+  transition: opacity 1.5s ease-out;
+}
+
 .editable,
 .secondEditable
  {
