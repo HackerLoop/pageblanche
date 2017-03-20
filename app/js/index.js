@@ -28,15 +28,17 @@ fs.writeFile(fileName, "coucou", function (err) {
 
 // Save changes
 
-document.getElementById('save-changes').addEventListener('click',function(){
-    var actualFilePath = fileName;
+document.onkeypress = function(e){
+    if (e.charCode == 13) {
+      var actualFilePath = fileName;
 
-    if(actualFilePath){
-        saveChanges(actualFilePath,document.getElementById("session-content").innerHTML);
-    }else{
-        console.log("Please select a file first");
+      if(actualFilePath){
+          saveChanges(actualFilePath,document.getElementById("session-content").innerHTML);
+      }else{
+          console.log("Please select a file first");
+      }
     }
-},false);
+  }
 
 document.getElementById('create-new-file').addEventListener('click',function(){
     var content = document.getElementById("session-content").innerHTML;
