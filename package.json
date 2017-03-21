@@ -20,6 +20,7 @@
     "electron": "^1.4.1"
   },
   "dependencies": {
-    "moment": "^2.18.0"
+    "moment": "^2.18.0",
+    "spintax": "0.0.1"
   }
 }
