@@ -45,7 +45,7 @@ var velocityMeasurer = function() {
   keyEvents = lastKeys;
   var n = lastKeys.length // number of last keys
   var gaugeOpacity = 1 - (n / 20);
-  velocityGauge.style = "width: 55vw;background-color: rgba(82,148,226,"+ gaugeOpacity +");"
+  velocityGauge.style = "width: 100vw;background-color: rgba(82,148,226,"+ gaugeOpacity +");"
 };
 
 setInterval(velocityMeasurer,50);
