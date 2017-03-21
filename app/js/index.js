@@ -1,5 +1,10 @@
 
-var editor = new MediumEditor('.editable');
+var editor = new MediumEditor('.editable', {
+    placeholder: {
+        text: 'Greetings, and welcome to page blanche.\nTake your time, and write what you feel like writing.\nPress Enter to save.',
+        hideOnClick: true
+    }
+});
 require('../renderer.js');
 
 
@@ -29,18 +34,18 @@ fs.writeFile(fileName, "what will you write today", function (err) {
 
 // Velocity indicator
 
-var velocityTimeframe = 3000;
-var velocityGauge = document.getElementById('session-content')
+var opacityVelocityTimeframe = 5000;
+var velocityGauge = document.getElementById('velocity')
 var keyEvents = [];
 var velocityMeasurer = function() {
   var lastKeys = keyEvents.filter(function(e){
-    var past = Date.now() - velocityTimeframe;
+    var past = Date.now() - opacityVelocityTimeframe;
     return e >= past;
   });
   keyEvents = lastKeys;
   var n = lastKeys.length // number of last keys
-  var gaugeOpacity = n / 25;
-  velocityGauge.style = "border-bottom-width:5px;border-bottom-color:rgba(82,148,226,"+ gaugeOpacity +");"
+  var gaugeOpacity = 1 - (n / 20);
+  velocityGauge.style = "width: 100vw;background-color: rgba(82,148,226,"+ gaugeOpacity +");"
 };
 
 setInterval(velocityMeasurer,50);
@@ -48,19 +53,11 @@ setInterval(velocityMeasurer,50);
 
 // Save changes
 
-var hasDisappeared = false;
 
 document.onkeypress = function(e){
 
     keyEvents.push(Date.now())
-    console.log("event added to table")
-
-    if (!hasDisappeared) {
-      var placeholder = document.getElementById('placeholder');
-      placeholder.style = "opacity:0;"
-      setTimeout(function(){placeholder.parentElement.removeChild(placeholder)},500);
-      hasDisappeared = true;
-    }
+    // console.log("typing event added to table")
 
     if (e.charCode == 13) {
       var actualFilePath = fileName;
