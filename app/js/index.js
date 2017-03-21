@@ -53,19 +53,11 @@ setInterval(velocityMeasurer,50);
 
 // Save changes
 
-var hasDisappeared = false;
 
 document.onkeypress = function(e){
 
     keyEvents.push(Date.now())
     // console.log("typing event added to table")
-
-    if (false && !hasDisappeared) {
-      var placeholder = document.getElementById('placeholder');
-      placeholder.style = "opacity:0;"
-      setTimeout(function(){placeholder.parentElement.removeChild(placeholder)},500);
-      hasDisappeared = true;
-    }
 
     if (e.charCode == 13) {
       var actualFilePath = fileName;
