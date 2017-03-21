@@ -1,5 +1,10 @@
 
-var editor = new MediumEditor('.editable');
+var editor = new MediumEditor('.editable', {
+    placeholder: {
+        text: 'Greetings, and welcome to page blanche.\nTake your time, and write what you feel like writing.\nPress Enter to save.',
+        hideOnClick: true
+    }
+});
 require('../renderer.js');
 
 
@@ -53,9 +58,9 @@ var hasDisappeared = false;
 document.onkeypress = function(e){
 
     keyEvents.push(Date.now())
-    console.log("event added to table")
+    // console.log("typing event added to table")
 
-    if (!hasDisappeared) {
+    if (false && !hasDisappeared) {
       var placeholder = document.getElementById('placeholder');
       placeholder.style = "opacity:0;"
       setTimeout(function(){placeholder.parentElement.removeChild(placeholder)},500);

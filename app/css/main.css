@@ -13,6 +13,7 @@ body {
     line-height: 33px;
     color: #333333;
     margin: 0;
+    cursor: text;
 }
 
 .top-bar {
@@ -115,7 +116,8 @@ blockquote {
     padding-bottom: 40px;
 }
 
-#placeholder {
+.medium-editor-placeholder:after {
+  font-style: normal !important;
   display: inline-block;
   color: rgba(41,41,41,0.4);
   transition: opacity 1.5s ease-out;
@@ -127,7 +129,6 @@ blockquote {
     outline: none;
     margin: 0 0 20px 0;
     padding: 0 0 20px 0;
-    /*border-bottom: 1px solid #dbdbdb;*/
     transition: border-bottom-width 0.03s border-bottom-color 0.03s;
 }
 
