@@ -27,16 +27,38 @@ fs.writeFile(fileName, "what will you write today", function (err) {
     console.log("The file has been succesfully created");
 });
 
+// Velocity indicator
+
+var velocityTimeframe = 3000;
+var velocityGauge = document.getElementById('session-content')
+var keyEvents = [];
+var velocityMeasurer = function() {
+  var lastKeys = keyEvents.filter(function(e){
+    var past = Date.now() - velocityTimeframe;
+    return e >= past;
+  });
+  keyEvents = lastKeys;
+  var n = lastKeys.length // number of last keys
+  var gaugeOpacity = n / 25;
+  velocityGauge.style = "border-bottom-width:5px;border-bottom-color:rgba(82,148,226,"+ gaugeOpacity +");"
+};
+
+setInterval(velocityMeasurer,50);
+
 
 // Save changes
 
-var hasDisappeared = false
+var hasDisappeared = false;
 
 document.onkeypress = function(e){
+
+    keyEvents.push(Date.now())
+    console.log("event added to table")
+
     if (!hasDisappeared) {
       var placeholder = document.getElementById('placeholder');
       placeholder.style = "opacity:0;"
-      setTimeout(function(){placeholder.parentElement.removeChild(placeholder)},1500);
+      setTimeout(function(){placeholder.parentElement.removeChild(placeholder)},500);
       hasDisappeared = true;
     }
 
