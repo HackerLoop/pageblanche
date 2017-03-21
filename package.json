@@ -20,6 +20,8 @@
     "electron": "^1.4.1"
   },
   "dependencies": {
+    "fs": "0.0.1-security",
+    "medium-editor": "^5.23.0",
     "moment": "^2.18.0",
     "spintax": "0.0.1"
   }
