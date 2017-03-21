@@ -10,8 +10,9 @@
 body {
     font-family: 'Playfair', Helvetica, Arial, sans-serif;
     font-size: 22px;
-    line-height: 30px;
+    line-height: 33px;
     color: #333333;
+    margin: 0;
 }
 
 .top-bar {
@@ -90,8 +91,19 @@ blockquote {
     color: #555;
 }
 
+#velocity {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: inline-block;
+  height: 5px;
+  z-index: 24071991;
+}
+
 #container {
-    width: 60%;
+    width: 50vw;
     min-width: 500px;
     margin: 30px auto;
     margin-top: 4em;
@@ -115,7 +127,7 @@ blockquote {
     outline: none;
     margin: 0 0 20px 0;
     padding: 0 0 20px 0;
-    border-bottom: 1px solid #dbdbdb;
+    /*border-bottom: 1px solid #dbdbdb;*/
     transition: border-bottom-width 0.03s border-bottom-color 0.03s;
 }
 

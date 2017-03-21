@@ -29,18 +29,18 @@ fs.writeFile(fileName, "what will you write today", function (err) {
 
 // Velocity indicator
 
-var velocityTimeframe = 3000;
-var velocityGauge = document.getElementById('session-content')
+var opacityVelocityTimeframe = 5000;
+var velocityGauge = document.getElementById('velocity')
 var keyEvents = [];
 var velocityMeasurer = function() {
   var lastKeys = keyEvents.filter(function(e){
-    var past = Date.now() - velocityTimeframe;
+    var past = Date.now() - opacityVelocityTimeframe;
     return e >= past;
   });
   keyEvents = lastKeys;
   var n = lastKeys.length // number of last keys
-  var gaugeOpacity = n / 25;
-  velocityGauge.style = "border-bottom-width:5px;border-bottom-color:rgba(82,148,226,"+ gaugeOpacity +");"
+  var gaugeOpacity = 1 - (n / 20);
+  velocityGauge.style = "width: 55vw;background-color: rgba(82,148,226,"+ gaugeOpacity +");"
 };
 
 setInterval(velocityMeasurer,50);
