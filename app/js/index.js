@@ -37,10 +37,26 @@ fs.writeFile(fileName, "what will you write today", function (err) {
     console.log("The file has been succesfully created");
 });
 
+// Velocity Graph
+
+var chart = new SmoothieChart({minValue:-1,maxValueScale: 1.2,minValueScale: 1.2,millisPerPixel:100,interpolation:'bezier',grid:{fillStyle:'transparent',strokeStyle:'transparent',verticalSections:0},labels:{disabled:true}});
+var canvas = document.getElementById('velocity-chart');
+var line1 = new TimeSeries();
+var line2 = new TimeSeries();
+
+//setInterval(function() {line1.append(new Date().getTime(), Math.random());}, 1000);
+
+chart.addTimeSeries(line1, {lineWidth:1,strokeStyle:'#b3b3b1',fillStyle:'rgba(80,233,162,0)'});
+// chart.addTimeSeries(line2, {lineWidth:1,strokeStyle:'#b3b3b1',fillStyle:'rgba(80,233,162,0)'});
+chart.streamTo(document.getElementById("velocity-chart"),1000);
+
+
+
 // Velocity indicator
 
-var opacityVelocityTimeframe = 5000;
-var velocityGauge = document.getElementById('velocity')
+var opacityVelocityTimeframe = 3000;
+var velocityGauge = document.getElementById('velocity');
+var chartContainer = document.getElementById('chart');
 var keyEvents = [];
 var velocityMeasurer = function() {
   var lastKeys = keyEvents.filter(function(e){
@@ -48,13 +64,22 @@ var velocityMeasurer = function() {
     return e >= past;
   });
   keyEvents = lastKeys;
+  var totalTextLength = document.getElementById('session-content').innerHTML.length;
+  var smoothenedTotalTextLength = totalTextLength / 10;
   var n = lastKeys.length // number of last keys
   var gaugeOpacity = 1 - (n / 20);
+  var chartOpacity = 1 - (n / 20);
   velocityGauge.style = "width: 100vw;background-color: rgba(82,148,226,"+ gaugeOpacity +");";
-
+  chartContainer.style = "opacity:"+ chartOpacity;
+  line1.append(new Date().getTime(), n);
+  line2.append(new Date().getTime(), smoothenedTotalTextLength);
 };
 
-setInterval(velocityMeasurer,50);
+setInterval(velocityMeasurer,2000);
+
+
+
+
 
 
 // Save changes
