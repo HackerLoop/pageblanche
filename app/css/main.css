@@ -4,12 +4,16 @@
 
 @font-face {
   font-family: Playfair;
-  src: url(fonts/PlayfairDisplay-Regular.otf);
+  src: url(fonts/playfair-display/PlayfairDisplay-Regular.otf);
+  font-family: source-code-pro;
+  src: url(fonts/source-code-pro/SourceCodePro-Light.otf);
 }
 
 body {
     font-family: 'Playfair', Helvetica, Arial, sans-serif;
     font-size: 16px;
+    font-family: 'source-code-pro','Playfair', Helvetica, Arial, sans-serif;
+    font-size: 22px;
     line-height: 33px;
     color: #424242;
     margin: 0;
