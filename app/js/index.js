@@ -2,7 +2,7 @@
 var editor = new MediumEditor('.editable', {
     placeholder: {
         text: 'Greetings, and welcome to page blanche.\nTake your time, and write what you feel like writing.\nPress Enter to save.',
-        hideOnClick: true
+        hideOnClick: false
     }
 });
 require('../renderer.js');
@@ -10,6 +10,11 @@ require('../renderer.js');
 
 var fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
 var moment = require('moment') // Load datetime formatter library
+
+// Auto focus on file
+document.getElementById("session-content").focus();
+
+
 
 // File creation, saving and updating system
 
@@ -45,7 +50,8 @@ var velocityMeasurer = function() {
   keyEvents = lastKeys;
   var n = lastKeys.length // number of last keys
   var gaugeOpacity = 1 - (n / 20);
-  velocityGauge.style = "width: 100vw;background-color: rgba(82,148,226,"+ gaugeOpacity +");"
+  velocityGauge.style = "width: 100vw;background-color: rgba(82,148,226,"+ gaugeOpacity +");";
+
 };
 
 setInterval(velocityMeasurer,50);
