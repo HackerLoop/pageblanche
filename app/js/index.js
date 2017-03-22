@@ -75,7 +75,7 @@ var velocityMeasurer = function() {
   line2.append(new Date().getTime(), smoothenedTotalTextLength);
 };
 
-setInterval(velocityMeasurer,2000);
+setInterval(velocityMeasurer,1800);
 
 
 
