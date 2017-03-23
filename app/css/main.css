@@ -106,6 +106,8 @@ blockquote {
   display: inline-block;
   height: 10px;
   z-index: 24071991;
+
+  /* display: none;*/
 }
 
 #container {
