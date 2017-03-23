@@ -39,7 +39,7 @@ fs.writeFile(fileName, "what will you write today", function (err) {
 
 // Velocity Graph
 
-var chart = new SmoothieChart({minValue:-1,maxValueScale: 1.2,minValueScale: 1.2,millisPerPixel:100,interpolation:'bezier',grid:{fillStyle:'transparent',strokeStyle:'transparent',verticalSections:0},labels:{disabled:true}});
+var chart = new SmoothieChart({scaleSmoothing: 0.250,minValue:-1,maxValueScale: 1.2,minValueScale: 1.2,millisPerPixel:100,interpolation:'bezier',grid:{fillStyle:'transparent',strokeStyle:'transparent',verticalSections:0},labels:{disabled:true}});
 var canvas = document.getElementById('velocity-chart');
 var line1 = new TimeSeries();
 var line2 = new TimeSeries();
@@ -64,7 +64,7 @@ var velocityMeasurer = function() {
     return e >= past;
   });
   keyEvents = lastKeys;
-  var totalTextLength = document.getElementById('session-content').innerHTML.length;
+  var totalTextLength = document.getElementById('session-content').innerText.length;
   var smoothenedTotalTextLength = totalTextLength / 10;
   var n = lastKeys.length // number of last keys
   var gaugeOpacity = 1 - (n / 20);
@@ -94,7 +94,7 @@ document.onkeypress = function(e){
       var actualFilePath = fileName;
 
       if(actualFilePath){
-          saveChanges(actualFilePath,document.getElementById("session-content").innerHTML);
+          saveChanges(actualFilePath,document.getElementById("session-content").innerText);
       }else{
           console.log("Please select a file first");
       }
@@ -102,7 +102,7 @@ document.onkeypress = function(e){
   }
 
 document.getElementById('create-new-file').addEventListener('click',function(){
-    var content = document.getElementById("session-content").innerHTML;
+    var content = document.getElementById("session-content").innerText;
 
     dialog.showSaveDialog(function (fileName) {
         if (fileName === undefined){
@@ -127,7 +127,7 @@ function readFile(filepath) {
             return;
         }
 
-        document.getElementById("session-content").innerHTML = data;
+        document.getElementById("session-content").innerText = data;
     });
 }
 
