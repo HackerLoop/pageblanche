@@ -1,23 +1,55 @@
 {
-  "name": "electron-quick-start",
+  "name": "pageblanche",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "a single-task OS for writers",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "postinstall": "install-app-deps",
+    "start": "npm install && electron ./app",
+    "pack": "build --dir",
+    "dist": "build"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+
+  "repository": "https://github.com/HackerLoop/pageblanche",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "single task os",
+    "writing os",
+    "writing app",
+    "writer dream",
+    "raphisky"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "xyz <xyz@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "^1.4.1"
+    "electron": "^1.4.1",
+    "electron-builder": "^16.6.1"
+  },
+  "build": {
+    "appId": "pageblanche",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico"
+    }
   },
   "dependencies": {
     "fs": "0.0.1-security",
