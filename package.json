@@ -5,11 +5,10 @@
   "main": "main.js",
   "scripts": {
     "postinstall": "install-app-deps",
-    "start": "npm install && electron ./app",
+    "start": "electron .",
     "pack": "build --dir",
     "dist": "build"
   },
-
   "repository": "https://github.com/HackerLoop/pageblanche",
   "keywords": [
     "single task os",
@@ -52,6 +51,7 @@
     }
   },
   "dependencies": {
+    "auto-launch": "^5.0.1",
     "fs": "0.0.1-security",
     "medium-editor": "^5.23.0",
     "moment": "^2.18.0",
